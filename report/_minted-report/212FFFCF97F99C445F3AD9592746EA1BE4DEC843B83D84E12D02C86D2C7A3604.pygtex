@@ -1,0 +1,143 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+////////////////////////////////////////////////////////////////////////////////
+// Author: Diogo Vilar Sardinha
+// Module Name:   wash\PYGZus{}fsm\PYGZus{}tb.v 
+// Project Name:  TB
+// Target Device: XC2S300E
+// Tool versions: ISE \PYG{l+m}{10}.1 + ModelSIM or ISIM
+// Description:   Washing Machine Controller TestBench
+////////////////////////////////////////////////////////////////////////////////
+/* 
+ *    Notes: 
+ *       \PYG{l+m}{1}\PYG{o}{)} Verilog code
+ *       \PYG{l+m}{2}\PYG{o}{)} Simulation images of the circuit
+ *       \PYG{l+m}{3}\PYG{o}{)} Place and route report \PYG{k}{for} 50MHz
+ *       \PYG{l+m}{4}\PYG{o}{)} Place and route report \PYG{k}{for} the maximum frequency to which the circuit can operate
+ *
+ *       Clocked at \PYG{l+m}{50} MHz \PYG{o}{(}\PYG{n+nv}{T} \PYG{o}{=} \PYG{l+m}{20} ns\PYG{o}{)} \PYG{o}{(}50M ticks per second\PYG{o}{)}
+ *       \PYG{o}{(}ucf diz: \PYG{n+nv}{T}\PYG{o}{=}10ns \PYG{l+m}{50}\PYGZpc{}High\PYG{o}{)}
+ *       To reduce simulation time, use smaller \PYG{n+nb}{time} delays in the
+ *       state transitions Wash\PYGZhy{}\PYGZgt{}Drain and Speed\PYGZhy{}\PYGZgt{}Ready. 
+ *       Example: 
+ *                Wash\PYGZhy{}\PYGZgt{}Drain \PYG{l+m}{160} ns     
+ *                Speed\PYGZhy{}\PYGZgt{}Ready \PYG{l+m}{80} ns              
+ */
+
+\PYG{l+s+sb}{`}timescale \PYG{l+m}{1} ns / \PYG{l+m}{1} ns 
+/* timescale 1ns/1ns means the \PYG{n+nb}{time} unit and \PYG{n+nb}{time} precision of a module that follow it.
+ * The simulation \PYG{n+nb}{time} and delay values are measured using \PYG{n+nb}{time} unit. 
+ * The precision factor is needed to measure the degree of accuracy of the \PYG{n+nb}{time} unit,
+ * in other words how delay values are rounded before being used in simulation.
+ * Whatever \PYG{n+nb}{times} you mensioned in verilog code will be taken in ns.eg.
+ * Resolution of 1ns means you can have 1ns as smallest representation of the time.
+ */
+
+module testbench\PYG{p}{;}
+
+	// Inputs
+	reg reset\PYG{p}{;}
+	reg clk\PYG{p}{;}
+	reg start\PYG{p}{;}
+	reg full\PYG{p}{;}
+	reg empty\PYG{p}{;}
+	reg cold\PYG{p}{;}
+
+	// Outputs
+	wire ready\PYG{p}{;}
+	wire water\PYGZus{}in\PYG{p}{;}
+	wire heat\PYGZus{}r\PYG{p}{;}
+	wire wash\PYG{p}{;}
+	wire drain\PYG{p}{;}
+	wire speed\PYG{p}{;}
+
+	// Instantiate the Unit Under Test \PYG{o}{(}UUT\PYG{o}{)} or \PYG{o}{(}DUT\PYG{o}{)} Device Under Test
+	wash\PYGZus{}fsm uut \PYG{o}{(}
+		.reset\PYG{o}{(}reset\PYG{o}{)}, 
+		.clk\PYG{o}{(}clk\PYG{o}{)}, 
+		.start\PYG{o}{(}start\PYG{o}{)}, 
+		.full\PYG{o}{(}full\PYG{o}{)}, 
+		.empty\PYG{o}{(}empty\PYG{o}{)}, 
+		.cold\PYG{o}{(}cold\PYG{o}{)}, 
+		.ready\PYG{o}{(}ready\PYG{o}{)}, 
+		.water\PYGZus{}in\PYG{o}{(}water\PYGZus{}in\PYG{o}{)}, 
+		.heat\PYGZus{}r\PYG{o}{(}heat\PYGZus{}r\PYG{o}{)}, 
+		.wash\PYG{o}{(}wash\PYG{o}{)}, 
+		.drain\PYG{o}{(}drain\PYG{o}{)}, 
+		.speed\PYG{o}{(}speed\PYG{o}{)}
+	\PYG{o}{)}\PYG{p}{;}
+   
+   // Clock generator
+   always
+   \PYG{c+c1}{\PYGZsh{}10.0 clk = \PYGZti{}clk; // Toggle clock every 10 ticks (T=20ns)}
+
+   initial begin
+      // Initialize Inputs
+		\PYG{n+nv}{reset} \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{;}
+		\PYG{n+nv}{clk} \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{;}
+		\PYG{n+nv}{start} \PYG{o}{=} \PYG{l+m}{0}\PYG{p}{;}
+		\PYG{n+nv}{full} \PYG{o}{=} \PYG{l+m}{0}\PYG{p}{;}
+		\PYG{n+nv}{empty} \PYG{o}{=} \PYG{l+m}{0}\PYG{p}{;}
+		\PYG{n+nv}{cold} \PYG{o}{=} \PYG{l+m}{0}\PYG{p}{;}
+      
+      // Display initial message
+      \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Washing Machine FSM\PYGZdq{}}\PYG{o}{)}\PYG{p}{;}
+		
+		// Add stimulus here
+      @\PYG{o}{(}negedge clk\PYG{o}{)} 
+         \PYG{n+nv}{reset} \PYG{o}{=} \PYG{l+m}{0}\PYG{p}{;}
+		\PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, reset assigned \PYGZsq{}0\PYGZsq{}\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}
+      @\PYG{o}{(}negedge clk\PYG{o}{)}
+         \PYG{n+nv}{start} \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{;}
+      \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, start assigned \PYGZsq{}1\PYGZsq{}\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}
+      @\PYG{o}{(}negedge clk\PYG{o}{)}
+         \PYG{n+nv}{full} \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{;}
+      \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, full assigned \PYGZsq{}1\PYGZsq{}\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}
+      @\PYG{o}{(}negedge clk\PYG{o}{)}
+         \PYG{n+nv}{cold} \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{;}
+      \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, cold assigned \PYGZsq{}1\PYGZsq{}\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}
+      @\PYG{o}{(}negedge clk\PYG{o}{)}
+         \PYG{n+nv}{cold} \PYG{o}{=} \PYG{l+m}{0}\PYG{p}{;}
+      \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, cold assigned \PYGZsq{}0\PYGZsq{}\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}
+		\PYG{k}{while}\PYG{o}{(}drain !\PYG{o}{=} \PYG{l+m}{1}\PYG{o}{)} begin \PYG{c+c1}{\PYGZsh{}1; end}
+      @\PYG{o}{(}negedge clk\PYG{o}{)}
+         \PYG{n+nv}{empty} \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{;}
+      \PYG{k}{while}\PYG{o}{(}ready !\PYG{o}{=} \PYG{l+m}{1}\PYG{o}{)} begin \PYG{c+c1}{\PYGZsh{}1; end}
+      \PYG{n+nv}{\PYGZdl{}stop}\PYG{p}{;}		
+  
+				
+      @\PYG{o}{(}negedge clk\PYG{o}{)}
+         \PYG{n+nv}{start} \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{;}
+      \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, start assigned \PYGZsq{}1\PYGZsq{}\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}
+      @\PYG{o}{(}negedge clk\PYG{o}{)}
+         \PYG{n+nv}{full} \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{;}
+      \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, full assigned \PYGZsq{}1\PYGZsq{}\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}
+      @\PYG{o}{(}negedge clk\PYG{o}{)}
+         \PYG{n+nv}{cold} \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{;}
+      \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, cold assigned \PYGZsq{}1\PYGZsq{}\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}
+      @\PYG{o}{(}negedge clk\PYG{o}{)}
+         \PYG{n+nv}{cold} \PYG{o}{=} \PYG{l+m}{0}\PYG{p}{;}
+      \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, cold assigned \PYGZsq{}0\PYGZsq{}\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}
+		\PYG{k}{while}\PYG{o}{(}drain !\PYG{o}{=} \PYG{l+m}{1}\PYG{o}{)} begin \PYG{c+c1}{\PYGZsh{}1; end}
+      @\PYG{o}{(}negedge clk\PYG{o}{)}
+         \PYG{n+nv}{empty} \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{;}
+      \PYG{k}{while}\PYG{o}{(}ready !\PYG{o}{=} \PYG{l+m}{1}\PYG{o}{)} begin \PYG{c+c1}{\PYGZsh{}1; end}
+      \PYG{n+nv}{\PYGZdl{}stop}\PYG{p}{;}		
+		end 
+		
+      always @\PYG{o}{(}posedge ready\PYG{o}{)}
+         \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, entering Ready state\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}
+      always @\PYG{o}{(}posedge water\PYGZus{}in\PYG{o}{)}
+         \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, entering Water In state\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}
+      always @\PYG{o}{(}posedge wash\PYG{o}{)}
+         \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, entering Wash state\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}	
+      always @\PYG{o}{(}posedge drain\PYG{o}{)}
+         \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, entering Drain state\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}
+      always @\PYG{o}{(}posedge speed\PYG{o}{)}
+         \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, entering Speed state\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}
+      always @\PYG{o}{(}posedge heat\PYGZus{}r\PYG{o}{)}
+         \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, heat\PYGZus{}r asserted\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}
+      always @\PYG{o}{(}negedge heat\PYGZus{}r\PYG{o}{)}
+         \PYG{n+nv}{\PYGZdl{}display}\PYG{o}{(}\PYG{l+s+s2}{\PYGZdq{}Time = \PYGZpc{}t ns, heat\PYGZus{}r de\PYGZhy{}asserted\PYGZdq{}}, \PYG{n+nv}{\PYGZdl{}time}*10\PYG{o}{)}\PYG{p}{;}
+			
+endmodule
+\end{Verbatim}

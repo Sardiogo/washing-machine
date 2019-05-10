@@ -1,0 +1,195 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Release} \PYG{l+m+mf}{14.7} \PYG{n}{par} \PYG{n}{P}\PYG{l+m+mf}{.20131013} \PYG{p}{(}\PYG{n}{nt}\PYG{p}{)}
+\PYG{n}{Copyright} \PYG{p}{(}\PYG{n}{c}\PYG{p}{)} \PYG{l+m+mi}{1995}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2013} \PYG{n}{Xilinx}\PYG{p}{,} \PYG{n}{Inc}\PYG{p}{.}  \PYG{n}{All} \PYG{n}{rights} \PYG{n}{reserved}\PYG{p}{.}
+
+\PYG{n}{DIOGOLAPTOP}\PYG{o}{::} 
+
+\PYG{n}{par} \PYG{o}{\PYGZhy{}}\PYG{n}{filter} \PYG{n+nl}{C}\PYG{p}{:}\PYG{o}{/}\PYG{p}{.}\PYG{n}{Xilinx}\PYG{o}{/}\PYG{n}{wash\PYGZus{}fsm}\PYG{o}{/}\PYG{n}{iseconfig}\PYG{o}{/}\PYG{n}{filter}\PYG{p}{.}\PYG{n}{filter} \PYG{o}{\PYGZhy{}}\PYG{n}{w} \PYG{o}{\PYGZhy{}}\PYG{n}{intstyle} \PYG{n}{ise} \PYG{o}{\PYGZhy{}}\PYG{n}{ol}
+\PYG{n}{high} \PYG{o}{\PYGZhy{}}\PYG{n}{t} \PYG{l+m+mi}{1} \PYG{n}{wash\PYGZus{}fsm\PYGZus{}map}\PYG{p}{.}\PYG{n}{ncd} \PYG{n}{wash\PYGZus{}fsm}\PYG{p}{.}\PYG{n}{ncd} \PYG{n}{wash\PYGZus{}fsm}\PYG{p}{.}\PYG{n}{pcf} 
+
+
+\PYG{n}{Constraints} \PYG{n+nl}{file}\PYG{p}{:} \PYG{n}{wash\PYGZus{}fsm}\PYG{p}{.}\PYG{n}{pcf}\PYG{p}{.}
+\PYG{n}{Loading} \PYG{n}{device} \PYG{k}{for} \PYG{n}{application} \PYG{n}{Rf\PYGZus{}Device} \PYG{n}{from} \PYG{n}{file} \PYG{err}{\PYGZsq{}}\PYG{l+m+mi}{3}\PYG{n}{s100e}\PYG{p}{.}\PYG{n}{nph}\PYG{err}{\PYGZsq{}} \PYG{n}{in} \PYG{n}{environment} \PYG{n+nl}{C}\PYG{p}{:}\PYG{err}{\PYGZbs{}}\PYG{n}{Xilinx}\PYG{err}{\PYGZbs{}}\PYG{l+m+mf}{14.7}\PYG{err}{\PYGZbs{}}\PYG{n}{ISE\PYGZus{}DS}\PYG{err}{\PYGZbs{}}\PYG{n}{ISE}\PYG{err}{\PYGZbs{}}\PYG{p}{.}
+   \PYG{l+s}{\PYGZdq{}wash\PYGZus{}fsm\PYGZdq{}} \PYG{n}{is} \PYG{n}{an} \PYG{n}{NCD}\PYG{p}{,} \PYG{n}{version} \PYG{l+m+mf}{3.2}\PYG{p}{,} \PYG{n}{device} \PYG{n}{xc3s100e}\PYG{p}{,} \PYG{n}{package} \PYG{n}{cp132}\PYG{p}{,} \PYG{n}{speed} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}
+
+\PYG{n}{Initializing} \PYG{n}{temperature} \PYG{n}{to} \PYG{l+m+mf}{85.000} \PYG{n}{Celsius}\PYG{p}{.} \PYG{p}{(}\PYG{k}{default} \PYG{o}{\PYGZhy{}} \PYG{n+nl}{Range}\PYG{p}{:} \PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{40.000} \PYG{n}{to} \PYG{l+m+mf}{100.000} \PYG{n}{Celsius}\PYG{p}{)}
+\PYG{n}{Initializing} \PYG{n}{voltage} \PYG{n}{to} \PYG{l+m+mf}{1.140} \PYG{n}{Volts}\PYG{p}{.} \PYG{p}{(}\PYG{k}{default} \PYG{o}{\PYGZhy{}} \PYG{n+nl}{Range}\PYG{p}{:} \PYG{l+m+mf}{1.140} \PYG{n}{to} \PYG{l+m+mf}{1.320} \PYG{n}{Volts}\PYG{p}{)}
+
+
+\PYG{n}{Device} \PYG{n}{speed} \PYG{n}{data} \PYG{n+nl}{version}\PYG{p}{:}  \PYG{l+s}{\PYGZdq{}PRODUCTION 1.27 2013\PYGZhy{}10\PYGZhy{}13\PYGZdq{}}\PYG{p}{.}
+
+
+\PYG{n}{Design} \PYG{n}{Summary} \PYG{n+nl}{Report}\PYG{p}{:}
+
+ \PYG{n}{Number} \PYG{n}{of} \PYG{n}{External} \PYG{n}{IOBs}                          \PYG{l+m+mi}{12} \PYG{n}{out} \PYG{n}{of} \PYG{l+m+mi}{83}     \PYG{l+m+mi}{14}\PYG{o}{\PYGZpc{}}
+
+   \PYG{n}{Number} \PYG{n}{of} \PYG{n}{External} \PYG{n}{Input} \PYG{n}{IOBs}                  \PYG{l+m+mi}{6}
+
+      \PYG{n}{Number} \PYG{n}{of} \PYG{n}{External} \PYG{n}{Input} \PYG{n}{IBUFs}              \PYG{l+m+mi}{6}
+        \PYG{n}{Number} \PYG{n}{of} \PYG{n}{LOCed} \PYG{n}{External} \PYG{n}{Input} \PYG{n}{IBUFs}      \PYG{l+m+mi}{6} \PYG{n}{out} \PYG{n}{of} \PYG{l+m+mi}{6}     \PYG{l+m+mi}{100}\PYG{o}{\PYGZpc{}}
+
+
+   \PYG{n}{Number} \PYG{n}{of} \PYG{n}{External} \PYG{n}{Output} \PYG{n}{IOBs}                 \PYG{l+m+mi}{6}
+
+      \PYG{n}{Number} \PYG{n}{of} \PYG{n}{External} \PYG{n}{Output} \PYG{n}{IOBs}              \PYG{l+m+mi}{6}
+        \PYG{n}{Number} \PYG{n}{of} \PYG{n}{LOCed} \PYG{n}{External} \PYG{n}{Output} \PYG{n}{IOBs}      \PYG{l+m+mi}{6} \PYG{n}{out} \PYG{n}{of} \PYG{l+m+mi}{6}     \PYG{l+m+mi}{100}\PYG{o}{\PYGZpc{}}
+
+
+   \PYG{n}{Number} \PYG{n}{of} \PYG{n}{External} \PYG{n}{Bidir} \PYG{n}{IOBs}                  \PYG{l+m+mi}{0}
+
+
+   \PYG{n}{Number} \PYG{n}{of} \PYG{n}{BUFGMUXs}                        \PYG{l+m+mi}{1} \PYG{n}{out} \PYG{n}{of} \PYG{l+m+mi}{24}      \PYG{l+m+mi}{4}\PYG{o}{\PYGZpc{}}
+   \PYG{n}{Number} \PYG{n}{of} \PYG{n}{Slices}                         \PYG{l+m+mi}{30} \PYG{n}{out} \PYG{n}{of} \PYG{l+m+mi}{960}     \PYG{l+m+mi}{3}\PYG{o}{\PYGZpc{}}
+      \PYG{n}{Number} \PYG{n}{of} \PYG{n}{SLICEMs}                      \PYG{l+m+mi}{0} \PYG{n}{out} \PYG{n}{of} \PYG{l+m+mi}{480}     \PYG{l+m+mi}{0}\PYG{o}{\PYGZpc{}}
+
+
+
+\PYG{n}{Overall} \PYG{n}{effort} \PYG{n}{level} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{ol}\PYG{p}{)}\PYG{o}{:}   \PYG{n}{High} 
+\PYG{n}{Placer} \PYG{n}{effort} \PYG{n}{level} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{pl}\PYG{p}{)}\PYG{o}{:}    \PYG{n}{High} 
+\PYG{n}{Placer} \PYG{n}{cost} \PYG{n}{table} \PYG{n}{entry} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{t}\PYG{p}{)}\PYG{o}{:} \PYG{l+m+mi}{1}
+\PYG{n}{Router} \PYG{n}{effort} \PYG{n}{level} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{rl}\PYG{p}{)}\PYG{o}{:}    \PYG{n}{High} 
+
+\PYG{n}{Starting} \PYG{n}{initial} \PYG{n}{Timing} \PYG{n}{Analysis}\PYG{p}{.}  \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{1} \PYG{n}{secs} 
+\PYG{n}{Finished} \PYG{n}{initial} \PYG{n}{Timing} \PYG{n}{Analysis}\PYG{p}{.}  \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{1} \PYG{n}{secs} 
+
+
+\PYG{n}{Starting} \PYG{n}{Placer}
+\PYG{n}{Total} \PYG{n}{REAL} \PYG{n}{time} \PYG{n}{at} \PYG{n}{the} \PYG{n}{beginning} \PYG{n}{of} \PYG{n+nl}{Placer}\PYG{p}{:} \PYG{l+m+mi}{1} \PYG{n}{secs} 
+\PYG{n}{Total} \PYG{n}{CPU}  \PYG{n}{time} \PYG{n}{at} \PYG{n}{the} \PYG{n}{beginning} \PYG{n}{of} \PYG{n+nl}{Placer}\PYG{p}{:} \PYG{l+m+mi}{1} \PYG{n}{secs} 
+
+\PYG{n}{Phase} \PYG{l+m+mf}{1.1}  \PYG{n}{Initial} \PYG{n}{Placement} \PYG{n}{Analysis}
+\PYG{n}{Phase} \PYG{l+m+mf}{1.1}  \PYG{n}{Initial} \PYG{n}{Placement} \PYG{n}{Analysis} \PYG{p}{(}\PYG{n+nl}{Checksum}\PYG{p}{:}\PYG{l+m+mi}{10}\PYG{n}{a301f5}\PYG{p}{)} \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{1} \PYG{n}{secs} 
+
+\PYG{n}{Phase} \PYG{l+m+mf}{2.7}  \PYG{n}{Design} \PYG{n}{Feasibility} \PYG{n}{Check}
+\PYG{n}{Phase} \PYG{l+m+mf}{2.7}  \PYG{n}{Design} \PYG{n}{Feasibility} \PYG{n}{Check} \PYG{p}{(}\PYG{n+nl}{Checksum}\PYG{p}{:}\PYG{l+m+mi}{10}\PYG{n}{a301f5}\PYG{p}{)} \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{1} \PYG{n}{secs} 
+
+\PYG{n}{Phase} \PYG{l+m+mf}{3.31}  \PYG{n}{Local} \PYG{n}{Placement} \PYG{n}{Optimization}
+\PYG{n}{Phase} \PYG{l+m+mf}{3.31}  \PYG{n}{Local} \PYG{n}{Placement} \PYG{n}{Optimization} \PYG{p}{(}\PYG{n+nl}{Checksum}\PYG{p}{:}\PYG{l+m+mi}{10}\PYG{n}{a301f5}\PYG{p}{)} \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{1} \PYG{n}{secs} 
+
+\PYG{n}{Phase} \PYG{l+m+mf}{4.2}  \PYG{n}{Initial} \PYG{n}{Clock} \PYG{n}{and} \PYG{n}{IO} \PYG{n}{Placement}
+
+\PYG{n}{Phase} \PYG{l+m+mf}{4.2}  \PYG{n}{Initial} \PYG{n}{Clock} \PYG{n}{and} \PYG{n}{IO} \PYG{n}{Placement} \PYG{p}{(}\PYG{n+nl}{Checksum}\PYG{p}{:}\PYG{l+m+mi}{11}\PYG{n}{efa21d}\PYG{p}{)} \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{1} \PYG{n}{secs} 
+
+\PYG{n}{Phase} \PYG{l+m+mf}{5.30}  \PYG{n}{Global} \PYG{n}{Clock} \PYG{n}{Region} \PYG{n}{Assignment}
+\PYG{n}{Phase} \PYG{l+m+mf}{5.30}  \PYG{n}{Global} \PYG{n}{Clock} \PYG{n}{Region} \PYG{n}{Assignment} \PYG{p}{(}\PYG{n+nl}{Checksum}\PYG{p}{:}\PYG{l+m+mi}{11}\PYG{n}{efa21d}\PYG{p}{)} \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{1} \PYG{n}{secs} 
+
+\PYG{n}{Phase} \PYG{l+m+mf}{6.36}  \PYG{n}{Local} \PYG{n}{Placement} \PYG{n}{Optimization}
+\PYG{n}{Phase} \PYG{l+m+mf}{6.36}  \PYG{n}{Local} \PYG{n}{Placement} \PYG{n}{Optimization} \PYG{p}{(}\PYG{n+nl}{Checksum}\PYG{p}{:}\PYG{l+m+mi}{11}\PYG{n}{efa21d}\PYG{p}{)} \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{1} \PYG{n}{secs} 
+
+\PYG{n}{Phase} \PYG{l+m+mf}{7.8}  \PYG{n}{Global} \PYG{n}{Placement}
+\PYG{p}{..}
+\PYG{p}{..}
+\PYG{p}{..}
+\PYG{p}{..}
+\PYG{p}{..}
+\PYG{p}{..}
+\PYG{n}{Phase} \PYG{l+m+mf}{7.8}  \PYG{n}{Global} \PYG{n}{Placement} \PYG{p}{(}\PYG{n+nl}{Checksum}\PYG{p}{:}\PYG{l+m+mi}{341}\PYG{n}{b8d44}\PYG{p}{)} \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{2} \PYG{n}{secs} 
+
+\PYG{n}{Phase} \PYG{l+m+mf}{8.5}  \PYG{n}{Local} \PYG{n}{Placement} \PYG{n}{Optimization}
+\PYG{n}{Phase} \PYG{l+m+mf}{8.5}  \PYG{n}{Local} \PYG{n}{Placement} \PYG{n}{Optimization} \PYG{p}{(}\PYG{n+nl}{Checksum}\PYG{p}{:}\PYG{l+m+mi}{341}\PYG{n}{b8d44}\PYG{p}{)} \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{2} \PYG{n}{secs} 
+
+\PYG{n}{Phase} \PYG{l+m+mf}{9.18}  \PYG{n}{Placement} \PYG{n}{Optimization}
+\PYG{n}{Phase} \PYG{l+m+mf}{9.18}  \PYG{n}{Placement} \PYG{n}{Optimization} \PYG{p}{(}\PYG{n+nl}{Checksum}\PYG{p}{:}\PYG{l+m+mi}{365}\PYG{n}{dd31f}\PYG{p}{)} \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{2} \PYG{n}{secs} 
+
+\PYG{n}{Phase} \PYG{l+m+mf}{10.5}  \PYG{n}{Local} \PYG{n}{Placement} \PYG{n}{Optimization}
+\PYG{n}{Phase} \PYG{l+m+mf}{10.5}  \PYG{n}{Local} \PYG{n}{Placement} \PYG{n}{Optimization} \PYG{p}{(}\PYG{n+nl}{Checksum}\PYG{p}{:}\PYG{l+m+mi}{365}\PYG{n}{dd31f}\PYG{p}{)} \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{2} \PYG{n}{secs} 
+
+\PYG{n}{Total} \PYG{n}{REAL} \PYG{n}{time} \PYG{n}{to} \PYG{n}{Placer} \PYG{n+nl}{completion}\PYG{p}{:} \PYG{l+m+mi}{2} \PYG{n}{secs} 
+\PYG{n}{Total} \PYG{n}{CPU}  \PYG{n}{time} \PYG{n}{to} \PYG{n}{Placer} \PYG{n+nl}{completion}\PYG{p}{:} \PYG{l+m+mi}{2} \PYG{n}{secs} 
+\PYG{n}{Writing} \PYG{n}{design} \PYG{n}{to} \PYG{n}{file} \PYG{n}{wash\PYGZus{}fsm}\PYG{p}{.}\PYG{n}{ncd}
+
+
+
+\PYG{n}{Starting} \PYG{n}{Router}
+
+
+\PYG{n}{Phase}  \PYG{l+m+mi}{1}  \PYG{o}{:} \PYG{l+m+mi}{187} \PYG{n}{unrouted}\PYG{p}{;}      \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{3} \PYG{n}{secs} 
+
+\PYG{n}{Phase}  \PYG{l+m+mi}{2}  \PYG{o}{:} \PYG{l+m+mi}{169} \PYG{n}{unrouted}\PYG{p}{;}      \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{3} \PYG{n}{secs} 
+
+\PYG{n}{Phase}  \PYG{l+m+mi}{3}  \PYG{o}{:} \PYG{l+m+mi}{17} \PYG{n}{unrouted}\PYG{p}{;}      \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{3} \PYG{n}{secs} 
+
+\PYG{n}{Phase}  \PYG{l+m+mi}{4}  \PYG{o}{:} \PYG{l+m+mi}{22} \PYG{n}{unrouted}\PYG{p}{;} \PYG{p}{(}\PYG{n+nl}{Setup}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nl}{Hold}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{Component} \PYG{n}{Switching} \PYG{n+nl}{Limit}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{)}     \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{3} \PYG{n}{secs} 
+
+\PYG{n}{Phase}  \PYG{l+m+mi}{5}  \PYG{o}{:} \PYG{l+m+mi}{0} \PYG{n}{unrouted}\PYG{p}{;} \PYG{p}{(}\PYG{n+nl}{Setup}\PYG{p}{:}\PYG{l+m+mi}{199}\PYG{p}{,} \PYG{n+nl}{Hold}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{Component} \PYG{n}{Switching} \PYG{n+nl}{Limit}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{)}     \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{3} \PYG{n}{secs} 
+
+\PYG{n}{Updating} \PYG{n+nl}{file}\PYG{p}{:} \PYG{n}{wash\PYGZus{}fsm}\PYG{p}{.}\PYG{n}{ncd} \PYG{n}{with} \PYG{n}{current} \PYG{n}{fully} \PYG{n}{routed} \PYG{n}{design}\PYG{p}{.}
+
+\PYG{n}{Phase}  \PYG{l+m+mi}{6}  \PYG{o}{:} \PYG{l+m+mi}{0} \PYG{n}{unrouted}\PYG{p}{;} \PYG{p}{(}\PYG{n+nl}{Setup}\PYG{p}{:}\PYG{l+m+mi}{199}\PYG{p}{,} \PYG{n+nl}{Hold}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{Component} \PYG{n}{Switching} \PYG{n+nl}{Limit}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{)}     \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{3} \PYG{n}{secs} 
+
+\PYG{n}{Phase}  \PYG{l+m+mi}{7}  \PYG{o}{:} \PYG{l+m+mi}{0} \PYG{n}{unrouted}\PYG{p}{;} \PYG{p}{(}\PYG{n+nl}{Setup}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nl}{Hold}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{Component} \PYG{n}{Switching} \PYG{n+nl}{Limit}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{)}     \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{3} \PYG{n}{secs} 
+
+\PYG{n}{Phase}  \PYG{l+m+mi}{8}  \PYG{o}{:} \PYG{l+m+mi}{0} \PYG{n}{unrouted}\PYG{p}{;} \PYG{p}{(}\PYG{n+nl}{Setup}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nl}{Hold}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{Component} \PYG{n}{Switching} \PYG{n+nl}{Limit}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{)}     \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{3} \PYG{n}{secs} 
+
+\PYG{n}{Phase}  \PYG{l+m+mi}{9}  \PYG{o}{:} \PYG{l+m+mi}{0} \PYG{n}{unrouted}\PYG{p}{;} \PYG{p}{(}\PYG{n+nl}{Setup}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nl}{Hold}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{Component} \PYG{n}{Switching} \PYG{n+nl}{Limit}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{)}     \PYG{n}{REAL} \PYG{n+nl}{time}\PYG{p}{:} \PYG{l+m+mi}{3} \PYG{n}{secs} 
+
+\PYG{n}{Total} \PYG{n}{REAL} \PYG{n}{time} \PYG{n}{to} \PYG{n}{Router} \PYG{n+nl}{completion}\PYG{p}{:} \PYG{l+m+mi}{3} \PYG{n}{secs} 
+\PYG{n}{Total} \PYG{n}{CPU} \PYG{n}{time} \PYG{n}{to} \PYG{n}{Router} \PYG{n+nl}{completion}\PYG{p}{:} \PYG{l+m+mi}{3} \PYG{n}{secs} 
+
+\PYG{n}{Partition} \PYG{n}{Implementation} \PYG{n}{Status}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+  \PYG{n}{No} \PYG{n}{Partitions} \PYG{n}{were} \PYG{n}{found} \PYG{n}{in} \PYG{n}{this} \PYG{n}{design}\PYG{p}{.}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+\PYG{n}{Generating} \PYG{l+s}{\PYGZdq{}PAR\PYGZdq{}} \PYG{n}{statistics}\PYG{p}{.}
+
+\PYG{o}{**************************}
+\PYG{n}{Generating} \PYG{n}{Clock} \PYG{n}{Report}
+\PYG{o}{**************************}
+
+\PYG{o}{+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{o}{|}        \PYG{n}{Clock} \PYG{n}{Net}    \PYG{o}{|}   \PYG{n}{Resource}   \PYG{o}{|}\PYG{n}{Locked}\PYG{o}{|}\PYG{n}{Fanout}\PYG{o}{|}\PYG{n}{Net} \PYG{n}{Skew}\PYG{p}{(}\PYG{n}{ns}\PYG{p}{)}\PYG{o}{|}\PYG{n}{Max} \PYG{n}{Delay}\PYG{p}{(}\PYG{n}{ns}\PYG{p}{)}\PYG{o}{|}
+\PYG{o}{+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+\PYG{o}{|}           \PYG{n}{clk\PYGZus{}BUFGP} \PYG{o}{|} \PYG{n}{BUFGMUX\PYGZus{}X2Y11}\PYG{o}{|} \PYG{n}{No}   \PYG{o}{|}   \PYG{l+m+mi}{17} \PYG{o}{|}  \PYG{l+m+mf}{0.006}     \PYG{o}{|}  \PYG{l+m+mf}{0.059}      \PYG{o}{|}
+\PYG{o}{+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}+}
+
+\PYG{o}{*} \PYG{n}{Net} \PYG{n}{Skew} \PYG{n}{is} \PYG{n}{the} \PYG{n}{difference} \PYG{n}{between} \PYG{n}{the} \PYG{n}{minimum} \PYG{n}{and} \PYG{n}{maximum} \PYG{n}{routing}
+\PYG{n}{only} \PYG{n}{delays} \PYG{k}{for} \PYG{n}{the} \PYG{n}{net}\PYG{p}{.} \PYG{n}{Note} \PYG{n}{this} \PYG{n}{is} \PYG{n}{different} \PYG{n}{from} \PYG{n}{Clock} \PYG{n}{Skew} \PYG{n}{which}
+\PYG{n}{is} \PYG{n}{reported} \PYG{n}{in} \PYG{n}{TRCE} \PYG{n}{timing} \PYG{n}{report}\PYG{p}{.} \PYG{n}{Clock} \PYG{n}{Skew} \PYG{n}{is} \PYG{n}{the} \PYG{n}{difference} \PYG{n}{between}
+\PYG{n}{the} \PYG{n}{minimum} \PYG{n}{and} \PYG{n}{maximum} \PYG{n}{path} \PYG{n}{delays} \PYG{n}{which} \PYG{n}{includes} \PYG{n}{logic} \PYG{n}{delays}\PYG{p}{.}
+
+\PYG{o}{*} \PYG{n}{The} \PYG{n}{fanout} \PYG{n}{is} \PYG{n}{the} \PYG{n}{number} \PYG{n}{of} \PYG{n}{component} \PYG{n}{pins} \PYG{n}{not} \PYG{n}{the} \PYG{n}{individual} \PYG{n}{BEL} \PYG{n}{loads}\PYG{p}{,}
+\PYG{k}{for} \PYG{n}{example} \PYG{n}{SLICE} \PYG{n}{loads} \PYG{n}{not} \PYG{n}{FF} \PYG{n}{loads}\PYG{p}{.}
+
+\PYG{n}{Timing} \PYG{n+nl}{Score}\PYG{p}{:} \PYG{l+m+mi}{0} \PYG{p}{(}\PYG{n+nl}{Setup}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nl}{Hold}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{Component} \PYG{n}{Switching} \PYG{n+nl}{Limit}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{)}
+
+\PYG{n}{Asterisk} \PYG{p}{(}\PYG{o}{*}\PYG{p}{)} \PYG{n}{preceding} \PYG{n}{a} \PYG{n}{constraint} \PYG{n}{indicates} \PYG{n}{it} \PYG{n}{was} \PYG{n}{not} \PYG{n}{met}\PYG{p}{.}
+   \PYG{n}{This} \PYG{n}{may} \PYG{n}{be} \PYG{n}{due} \PYG{n}{to} \PYG{n}{a} \PYG{n}{setup} \PYG{n}{or} \PYG{n}{hold} \PYG{n}{violation}\PYG{p}{.}
+
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+  \PYG{n}{Constraint}                                \PYG{o}{|}    \PYG{n}{Check}    \PYG{o}{|} \PYG{n}{Worst} \PYG{n}{Case} \PYG{o}{|}  \PYG{n}{Best} \PYG{n}{Case} \PYG{o}{|} \PYG{n}{Timing} \PYG{o}{|}   \PYG{n}{Timing}   
+                                            \PYG{o}{|}             \PYG{o}{|}    \PYG{n}{Slack}   \PYG{o}{|} \PYG{n}{Achievable} \PYG{o}{|} \PYG{n}{Errors} \PYG{o}{|}    \PYG{n}{Score}   
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+  \PYG{n}{TS\PYGZus{}clkin} \PYG{o}{=} \PYG{n}{PERIOD} \PYG{n}{TIMEGRP} \PYG{l+s}{\PYGZdq{}clk\PYGZdq{}} \PYG{l+m+mf}{4.7} \PYG{n}{ns} \PYG{n}{HI} \PYG{o}{|} \PYG{n}{SETUP}       \PYG{o}{|}     \PYG{l+m+mf}{0.032}\PYG{n}{ns}\PYG{o}{|}     \PYG{l+m+mf}{4.668}\PYG{n}{ns}\PYG{o}{|}       \PYG{l+m+mi}{0}\PYG{o}{|}           \PYG{l+m+mi}{0}
+  \PYG{n}{GH} \PYG{l+m+mi}{50}\PYG{o}{\PYGZpc{}}                                    \PYG{o}{|} \PYG{n}{HOLD}        \PYG{o}{|}     \PYG{l+m+mf}{1.411}\PYG{n}{ns}\PYG{o}{|}            \PYG{o}{|}       \PYG{l+m+mi}{0}\PYG{o}{|}           \PYG{l+m+mi}{0}
+\PYG{o}{\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+
+
+\PYG{n}{All} \PYG{n}{constraints} \PYG{n}{were} \PYG{n}{met}\PYG{p}{.}
+
+
+\PYG{n}{Generating} \PYG{n}{Pad} \PYG{n}{Report}\PYG{p}{.}
+
+\PYG{n}{All} \PYG{n}{signals} \PYG{n}{are} \PYG{n}{completely} \PYG{n}{routed}\PYG{p}{.}
+
+\PYG{n}{Total} \PYG{n}{REAL} \PYG{n}{time} \PYG{n}{to} \PYG{n}{PAR} \PYG{n+nl}{completion}\PYG{p}{:} \PYG{l+m+mi}{4} \PYG{n}{secs} 
+\PYG{n}{Total} \PYG{n}{CPU} \PYG{n}{time} \PYG{n}{to} \PYG{n}{PAR} \PYG{n+nl}{completion}\PYG{p}{:} \PYG{l+m+mi}{4} \PYG{n}{secs} 
+
+\PYG{n}{Peak} \PYG{n}{Memory} \PYG{n+nl}{Usage}\PYG{p}{:}  \PYG{l+m+mi}{273} \PYG{n}{MB}
+
+\PYG{n+nl}{Placement}\PYG{p}{:} \PYG{n}{Completed} \PYG{o}{\PYGZhy{}} \PYG{n}{No} \PYG{n}{errors} \PYG{n}{found}\PYG{p}{.}
+\PYG{n+nl}{Routing}\PYG{p}{:} \PYG{n}{Completed} \PYG{o}{\PYGZhy{}} \PYG{n}{No} \PYG{n}{errors} \PYG{n}{found}\PYG{p}{.}
+\PYG{n+nl}{Timing}\PYG{p}{:} \PYG{n}{Completed} \PYG{o}{\PYGZhy{}} \PYG{n}{No} \PYG{n}{errors} \PYG{n}{found}\PYG{p}{.}
+
+\PYG{n}{Number} \PYG{n}{of} \PYG{n}{error} \PYG{n+nl}{messages}\PYG{p}{:} \PYG{l+m+mi}{0}
+\PYG{n}{Number} \PYG{n}{of} \PYG{n}{warning} \PYG{n+nl}{messages}\PYG{p}{:} \PYG{l+m+mi}{0}
+\PYG{n}{Number} \PYG{n}{of} \PYG{n}{info} \PYG{n+nl}{messages}\PYG{p}{:} \PYG{l+m+mi}{0}
+
+\PYG{n}{Writing} \PYG{n}{design} \PYG{n}{to} \PYG{n}{file} \PYG{n}{wash\PYGZus{}fsm}\PYG{p}{.}\PYG{n}{ncd}
+
+
+
+\PYG{n}{PAR} \PYG{n}{done}\PYG{o}{!}
+\end{Verbatim}

@@ -1,0 +1,101 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+cp}{\PYGZlt{}!DOCTYPE html\PYGZgt{}}
+\PYG{p}{\PYGZlt{}}\PYG{n+nt}{html}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{head}\PYG{p}{\PYGZgt{}}
+        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{title}\PYG{p}{\PYGZgt{}}Get Name\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{title}\PYG{p}{\PYGZgt{}}
+        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{style}\PYG{p}{\PYGZgt{}}
+            \PYG{n+nt}{h1}\PYG{p}{\PYGZob{}}\PYG{k}{font\PYGZhy{}family}\PYG{p}{:}\PYG{n}{Avantgarde}\PYG{p}{;} \PYG{k}{font\PYGZhy{}size}\PYG{p}{:}\PYG{l+m+mi}{200}\PYG{k+kt}{\PYGZpc{}}\PYG{p}{;\PYGZcb{}}
+            \PYG{n+nt}{table}\PYG{o}{,} \PYG{n+nt}{th}\PYG{o}{,} \PYG{n+nt}{td} \PYG{p}{\PYGZob{}}
+                \PYG{k}{border}\PYG{p}{:} \PYG{l+m+mi}{1}\PYG{k+kt}{px} \PYG{k+kc}{solid} \PYG{k+kc}{black}\PYG{p}{;}
+                \PYG{k}{border\PYGZhy{}collapse}\PYG{p}{:} \PYG{k+kc}{collapse}\PYG{p}{;}
+                \PYG{k}{color}\PYG{p}{:} \PYG{n}{Black}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{n+nt}{th}\PYG{o}{,} \PYG{n+nt}{td} \PYG{p}{\PYGZob{}}
+                \PYG{k}{padding}\PYG{p}{:} \PYG{l+m+mi}{7}\PYG{k+kt}{px}\PYG{p}{;}
+                \PYG{k}{text\PYGZhy{}align}\PYG{p}{:} \PYG{k+kc}{center}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{n+nt}{table} \PYG{n+nt}{tr}\PYG{p}{:}\PYG{n+nd}{nth\PYGZhy{}child}\PYG{o}{(}\PYG{n+nt}{even}\PYG{o}{)} \PYG{p}{\PYGZob{}}
+                \PYG{k}{background\PYGZhy{}color}\PYG{p}{:} \PYG{l+m+mh}{\PYGZsh{}F5FFFA}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{n+nt}{table} \PYG{n+nt}{tr}\PYG{p}{:}\PYG{n+nd}{nth\PYGZhy{}child}\PYG{o}{(}\PYG{n+nt}{odd}\PYG{o}{)} \PYG{p}{\PYGZob{}}
+                \PYG{k}{background\PYGZhy{}color}\PYG{p}{:} \PYG{l+m+mh}{\PYGZsh{}e6fff2}\PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+            \PYG{n+nt}{table} \PYG{n+nt}{th} \PYG{p}{\PYGZob{}}
+                \PYG{k}{background\PYGZhy{}color}\PYG{p}{:}\PYG{n}{LightSeaGreen} \PYG{p}{;}
+            \PYG{p}{\PYGZcb{}}
+        \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{style}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{head}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}}\PYG{n+nt}{body} \PYG{n+na}{style}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}background\PYGZhy{}color:Teal ; color:white; padding:20px;\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+        \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{style}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}background\PYGZhy{}color:DarkCyan ; color:white; padding:20px;\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+            \PYG{c+cp}{\PYGZlt{}?php}
+\PYG{c+cp}{                session\PYGZus{}start();}
+\PYG{c+cp}{                \PYGZdl{}host=\PYGZdq{}db.ist.utl.pt\PYGZdq{};}
+\PYG{c+cp}{                \PYGZdl{}user=\PYGZdq{}ist163070\PYGZdq{};}
+\PYG{c+cp}{                \PYGZdl{}pass=\PYGZdq{}jwos6368\PYGZdq{};}
+\PYG{c+cp}{                \PYGZdl{}dbname = \PYGZdl{}user;}
+\PYG{c+cp}{                \PYGZdl{}dsn= \PYGZdq{}mysql:host=\PYGZdq{} . \PYGZdl{}host. \PYGZdq{};dbname=\PYGZdq{} . \PYGZdl{}dbname;}
+\PYG{c+cp}{                try\PYGZob{}}
+\PYG{c+cp}{                    \PYGZdl{}connection = new PDO(\PYGZdl{}dsn, \PYGZdl{}user, \PYGZdl{}pass);}
+\PYG{c+cp}{                    echo \PYGZdq{}\PYGZlt{}sup\PYGZgt{}\PYGZlt{}em\PYGZgt{}Connected to database successfully\PYGZlt{}/em\PYGZgt{}\PYGZlt{}/sup\PYGZgt{}\PYGZlt{}br\PYGZgt{}\PYGZlt{}br\PYGZgt{}\PYGZdq{};}
+\PYG{c+cp}{                    \PYGZdl{}p\PYGZus{}name = \PYGZdl{}\PYGZus{}REQUEST[\PYGZsq{}pname\PYGZsq{}];}
+\PYG{c+cp}{                    if (empty(\PYGZdl{}p\PYGZus{}name)) \PYGZob{}}
+\PYG{c+cp}{                        echo \PYGZdq{}\PYGZlt{}h1\PYGZgt{}Name field is empty\PYGZlt{}/h1\PYGZgt{}\PYGZdq{};}
+\PYG{c+cp}{                        echo (\PYGZdq{}\PYGZlt{}p\PYGZgt{} \PYGZlt{}a href=1pname.php\PYGZgt{}Try again\PYGZlt{}/a\PYGZgt{} \PYGZlt{}/p\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                        exit();}
+\PYG{c+cp}{                    \PYGZcb{}}
+\PYG{c+cp}{                    \PYGZdl{}sql = \PYGZdq{}SELECT * FROM Patient WHERE name=\PYGZsq{}\PYGZdl{}p\PYGZus{}name\PYGZsq{}\PYGZdq{};}
+\PYG{c+cp}{                    \PYGZdl{}result = \PYGZdl{}connection\PYGZhy{}\PYGZgt{}prepare(\PYGZdl{}sql);}
+\PYG{c+cp}{                    \PYGZdl{}result\PYGZhy{}\PYGZgt{}execute();}
+\PYG{c+cp}{                    \PYGZdl{}sql = \PYGZdq{}SELECT name FROM Patient WHERE name=\PYGZsq{}\PYGZdl{}p\PYGZus{}name\PYGZsq{}\PYGZdq{};}
+\PYG{c+cp}{                    \PYGZdl{}st = \PYGZdl{}connection\PYGZhy{}\PYGZgt{}prepare(\PYGZdl{}sql);}
+\PYG{c+cp}{                    \PYGZdl{}st\PYGZhy{}\PYGZgt{}execute();}
+\PYG{c+cp}{                    \PYGZdl{}rs = \PYGZdl{}st\PYGZhy{}\PYGZgt{}fetch(PDO::FETCH\PYGZus{}ASSOC);}
+\PYG{c+cp}{                    \PYGZdl{}name = \PYGZdl{}rs[\PYGZsq{}name\PYGZsq{}];}
+\PYG{c+cp}{                    if (\PYGZdl{}result == FALSE or \PYGZdl{}name == FALSE)\PYGZob{}}
+\PYG{c+cp}{                        \PYGZdl{}info = \PYGZdl{}connection\PYGZhy{}\PYGZgt{}errorInfo();}
+\PYG{c+cp}{                        echo(\PYGZdq{}\PYGZlt{}p\PYGZgt{}Error: \PYGZob{}\PYGZdl{}info[2]\PYGZcb{}\PYGZlt{}/p\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                    \PYGZcb{}}
+\PYG{c+cp}{                    if (\PYGZdl{}name!=\PYGZdl{}p\PYGZus{}name) \PYGZob{}}
+\PYG{c+cp}{                        echo \PYGZdq{}\PYGZlt{}h1\PYGZgt{}That name is not in the database\PYGZlt{}/h1\PYGZgt{}\PYGZdq{};}
+\PYG{c+cp}{                        echo(}
+\PYG{c+cp}{                            \PYGZdq{}\PYGZlt{}p\PYGZgt{} Check if name is typed correctly or have extra spaces and}
+\PYG{c+cp}{                            \PYGZlt{}a href=1pname.php\PYGZgt{}try again\PYGZlt{}/a\PYGZgt{}\PYGZlt{}/p\PYGZgt{}\PYGZdq{}}
+\PYG{c+cp}{                        );}
+\PYG{c+cp}{                        echo (\PYGZdq{}\PYGZlt{}p\PYGZgt{}OR \PYGZlt{}a href=3newp.php\PYGZgt{}Insert New Patient Name\PYGZlt{}/a\PYGZgt{}\PYGZlt{}/p\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                        exit();}
+\PYG{c+cp}{                    \PYGZcb{}}
+\PYG{c+cp}{                    echo (\PYGZdq{}\PYGZlt{}h1\PYGZgt{} Patient Information \PYGZlt{}/h1\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                    echo \PYGZdq{}\PYGZlt{}br\PYGZgt{}\PYGZdq{};}
+\PYG{c+cp}{                    echo(\PYGZdq{}\PYGZlt{}table\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                        echo(\PYGZdq{}\PYGZlt{}tr\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                        echo(\PYGZdq{}\PYGZlt{}th\PYGZgt{}number\PYGZlt{}/th\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                        echo(\PYGZdq{}\PYGZlt{}th\PYGZgt{}name\PYGZlt{}/th\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                        echo(\PYGZdq{}\PYGZlt{}th\PYGZgt{}birthday\PYGZlt{}/th\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                        echo(\PYGZdq{}\PYGZlt{}th\PYGZgt{}address\PYGZlt{}/th\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                        echo(\PYGZdq{}\PYGZlt{}/tr\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                        foreach (\PYGZdl{}result as \PYGZdl{}key)}
+\PYG{c+cp}{                        \PYGZob{}}
+\PYG{c+cp}{                            echo(\PYGZdq{}\PYGZlt{}tr\PYGZgt{}\PYGZlt{}td\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                            echo(\PYGZdl{}key[\PYGZsq{}number\PYGZsq{}]);}
+\PYG{c+cp}{                            echo(\PYGZdq{}\PYGZlt{}/td\PYGZgt{}\PYGZlt{}td\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                            echo(\PYGZdl{}key[\PYGZsq{}name\PYGZsq{}]);}
+\PYG{c+cp}{                            echo(\PYGZdq{}\PYGZlt{}/td\PYGZgt{}\PYGZlt{}td\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                            echo(\PYGZdl{}key[\PYGZsq{}birthday\PYGZsq{}]);}
+\PYG{c+cp}{                            echo(\PYGZdq{}\PYGZlt{}/td\PYGZgt{}\PYGZlt{}td\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                            echo(\PYGZdl{}key[\PYGZsq{}address\PYGZsq{}]);}
+\PYG{c+cp}{                            echo(\PYGZdq{}\PYGZlt{}/td\PYGZgt{}\PYGZlt{}/tr\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                        \PYGZcb{}}
+\PYG{c+cp}{                    echo(\PYGZdq{}\PYGZlt{}/table\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                    \PYGZdl{}\PYGZus{}SESSION[\PYGZdq{}name\PYGZdq{}] = \PYGZdl{}name;}
+\PYG{c+cp}{                    echo (\PYGZdq{}\PYGZlt{}p\PYGZgt{}Devices currently attached to \PYGZlt{}a href=5pdevices.php\PYGZgt{}\PYGZdl{}name\PYGZlt{}/a\PYGZgt{}\PYGZlt{}/p\PYGZgt{}\PYGZdq{});}
+\PYG{c+cp}{                \PYGZcb{}}
+\PYG{c+cp}{                catch(PDOException \PYGZdl{}exception)\PYGZob{}}
+\PYG{c+cp}{                    echo \PYGZdq{}\PYGZlt{}p\PYGZgt{} Error. Connection failed: \PYGZdq{} . \PYGZdl{}exception\PYGZhy{}\PYGZgt{}getMessage().\PYGZdq{}\PYGZlt{}/p\PYGZgt{}\PYGZdq{};}
+\PYG{c+cp}{                    exit();}
+\PYG{c+cp}{                \PYGZcb{}}
+\PYG{c+cp}{                \PYGZdl{}connection = null;}
+\PYG{c+cp}{            ?\PYGZgt{}}
+        \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+    \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{body}\PYG{p}{\PYGZgt{}}
+\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{html}\PYG{p}{\PYGZgt{}}
+\end{Verbatim}

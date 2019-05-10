@@ -1,0 +1,15 @@
+The purpose of this lab was to increase my understanding of digital systems design using one of the most common hardware description languages ​​(HDL) . \\
+
+Using the Verilog language, this project was developed to implement a state machine to control a washing machine in FPGA. \\
+
+I started by drawing the states and transitions diagram, detailing the intended operation for the state machine, and through it I wrote the code that was implemented on the board, after a brief review of the code writing process in Verilog. \par
+
+Then, using xilinx software and using a Verilog test bench that allowed me to test several signals on the model without being necessary hardware. A test bench is a very useful working tool in the development of digital circuits. \\
+
+After running a series of simulations I verified in Xilinx the correct functioning of the Verilog code developed to implement my model.   \\
+
+To obtain the maximum frequency at which the circuit can operate, I performed a set of tests: by changing the operating time to successively smaller values ​​in the cfu file and I  ran the "Place and Route" until it reported that it was impossible to implement the design correctly. \\
+
+I ended up getting the incredible result of T = 4.688ns of period, which corresponds to an operating frequency of 214.2MHz! This may be due to the fact that in the code separate processes exist for the outputs and states, thus allowing the machine to operate with these two processes in parallel.
+
+I also tested the operation of the circuit on the Basys2 board, using the diagram in \autoref{fig:diagram} to validate the simulations and verify the correct functioning of the state machine, which has been validated.

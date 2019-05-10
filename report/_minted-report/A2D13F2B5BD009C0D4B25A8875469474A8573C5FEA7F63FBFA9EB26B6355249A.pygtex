@@ -1,0 +1,54 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{x}{\PYGZlt{}!DOCTYPE html \PYGZgt{}}
+\PYG{x}{\PYGZlt{}html\PYGZgt{}}
+\PYG{x}{    \PYGZlt{}head\PYGZgt{}}
+\PYG{x}{        \PYGZlt{}title\PYGZgt{}Create New Account\PYGZlt{}/title\PYGZgt{}}
+\PYG{x}{        \PYGZlt{}style\PYGZgt{}}
+\PYG{x}{            h1\PYGZob{}font\PYGZhy{}family:Optima; font\PYGZhy{}size:200\PYGZpc{};\PYGZcb{}}
+\PYG{x}{        \PYGZlt{}/style\PYGZgt{}}
+\PYG{x}{    \PYGZlt{}/head\PYGZgt{}}
+\PYG{x}{    \PYGZlt{}body style=\PYGZdq{}background\PYGZhy{}color:Teal ; color:white; padding:20px;\PYGZdq{}\PYGZgt{}}
+\PYG{x}{        \PYGZlt{}h2\PYGZgt{}Patient Registration:\PYGZlt{}/h2\PYGZgt{}}
+\PYG{x}{        \PYGZlt{}div style=\PYGZdq{}text\PYGZhy{}align:center; background\PYGZhy{}color:DarkCyan ; color:white; padding:20px;\PYGZdq{}\PYGZgt{}}
+\PYG{x}{            }\PYG{c+cp}{\PYGZlt{}?php}
+                \PYG{k}{try}\PYG{p}{\PYGZob{}}
+                    \PYG{n+nv}{\PYGZdl{}number} \PYG{o}{=} \PYG{n+nv}{\PYGZdl{}\PYGZus{}REQUEST}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}pnum\PYGZsq{}}\PYG{p}{];}
+                    \PYG{n+nv}{\PYGZdl{}name} \PYG{o}{=} \PYG{n+nv}{\PYGZdl{}\PYGZus{}REQUEST}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}pname\PYGZsq{}}\PYG{p}{];}
+                    \PYG{n+nv}{\PYGZdl{}bday} \PYG{o}{=} \PYG{n+nv}{\PYGZdl{}\PYGZus{}REQUEST}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}pbday\PYGZsq{}}\PYG{p}{];}
+                    \PYG{n+nv}{\PYGZdl{}adress} \PYG{o}{=} \PYG{n+nv}{\PYGZdl{}\PYGZus{}REQUEST}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}paddress\PYGZsq{}}\PYG{p}{];}
+                    \PYG{k}{if} \PYG{p}{(}\PYG{k}{empty}\PYG{p}{(}\PYG{n+nv}{\PYGZdl{}number}\PYG{p}{)} \PYG{k}{or} \PYG{k}{empty}\PYG{p}{(}\PYG{n+nv}{\PYGZdl{}name}\PYG{p}{)} \PYG{k}{or} \PYG{k}{empty}\PYG{p}{(}\PYG{n+nv}{\PYGZdl{}bday}\PYG{p}{)} \PYG{k}{or} \PYG{k}{empty}\PYG{p}{(}\PYG{n+nv}{\PYGZdl{}adress}\PYG{p}{))\PYGZob{}}
+                        \PYG{k}{echo} \PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}h1\PYGZgt{}fields cannot be empty\PYGZlt{}/h1\PYGZgt{}\PYGZdq{}}\PYG{p}{;}
+                        \PYG{k}{echo} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}p\PYGZgt{} \PYGZlt{}a href=3newp.php\PYGZgt{}Try again\PYGZlt{}/a\PYGZgt{} \PYGZlt{}/p\PYGZgt{}\PYGZdq{}}\PYG{p}{);}
+                        \PYG{k}{exit}\PYG{p}{();}
+                    \PYG{p}{\PYGZcb{}}
+                    \PYG{n+nb}{session\PYGZus{}start}\PYG{p}{();}
+                    \PYG{n+nv}{\PYGZdl{}host}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}db.ist.utl.pt\PYGZdq{}}\PYG{p}{;}
+                    \PYG{n+nv}{\PYGZdl{}user}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}ist163070\PYGZdq{}}\PYG{p}{;}
+                    \PYG{n+nv}{\PYGZdl{}pass}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}jwos6368\PYGZdq{}}\PYG{p}{;}
+                    \PYG{n+nv}{\PYGZdl{}dbname} \PYG{o}{=} \PYG{n+nv}{\PYGZdl{}user}\PYG{p}{;}
+                    \PYG{n+nv}{\PYGZdl{}dsn}\PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}mysql:host=\PYGZdq{}} \PYG{o}{.} \PYG{n+nv}{\PYGZdl{}host}\PYG{o}{.} \PYG{l+s+s2}{\PYGZdq{};dbname=\PYGZdq{}} \PYG{o}{.} \PYG{n+nv}{\PYGZdl{}dbname}\PYG{p}{;}
+                    \PYG{n+nv}{\PYGZdl{}connection} \PYG{o}{=} \PYG{k}{new} \PYG{n+nx}{PDO}\PYG{p}{(}\PYG{n+nv}{\PYGZdl{}dsn}\PYG{p}{,} \PYG{n+nv}{\PYGZdl{}user}\PYG{p}{,} \PYG{n+nv}{\PYGZdl{}pass}\PYG{p}{);}
+                    \PYG{k}{echo} \PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}sup\PYGZgt{}\PYGZlt{}em\PYGZgt{}Connected to database successfully\PYGZlt{}/em\PYGZgt{}\PYGZlt{}/sup\PYGZgt{}\PYGZlt{}br\PYGZgt{}\PYGZlt{}br\PYGZgt{}\PYGZdq{}}\PYG{p}{;}
+                    \PYG{n+nv}{\PYGZdl{}sql} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}INSERT INTO Patient VALUES(\PYGZsq{}}\PYG{l+s+si}{\PYGZdl{}number}\PYG{l+s+s2}{\PYGZsq{},\PYGZsq{}}\PYG{l+s+si}{\PYGZdl{}name}\PYG{l+s+s2}{\PYGZsq{},\PYGZsq{}}\PYG{l+s+si}{\PYGZdl{}bday}\PYG{l+s+s2}{\PYGZsq{},\PYGZsq{}}\PYG{l+s+si}{\PYGZdl{}adress}\PYG{l+s+s2}{\PYGZsq{})\PYGZdq{}}\PYG{p}{;}
+                    \PYG{n+nv}{\PYGZdl{}result} \PYG{o}{=} \PYG{n+nv}{\PYGZdl{}connection}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n+na}{prepare}\PYG{p}{(}\PYG{n+nv}{\PYGZdl{}sql}\PYG{p}{);}
+                    \PYG{n+nv}{\PYGZdl{}result}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n+na}{execute}\PYG{p}{();}
+                    \PYG{k}{if} \PYG{p}{(}\PYG{n+nv}{\PYGZdl{}result} \PYG{o}{==} \PYG{k}{FALSE}\PYG{p}{)\PYGZob{}}
+                        \PYG{n+nv}{\PYGZdl{}info} \PYG{o}{=} \PYG{n+nv}{\PYGZdl{}connection}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n+na}{errorInfo}\PYG{p}{();}
+                        \PYG{k}{echo}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}p\PYGZgt{}Error: }\PYG{l+s+si}{\PYGZob{}}\PYG{n+nv}{\PYGZdl{}info}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZlt{}/p\PYGZgt{}\PYGZdq{}}\PYG{p}{);}
+                        \PYG{k}{exit}\PYG{p}{();}
+                    \PYG{p}{\PYGZcb{}}
+                    \PYG{k}{echo} \PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}h1\PYGZgt{}Patient Registred:\PYGZlt{}/h1\PYGZgt{}\PYGZdq{}}\PYG{p}{;}
+                    \PYG{k}{echo} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}p\PYGZgt{}number: }\PYG{l+s+si}{\PYGZdl{}number}\PYG{l+s+s2}{ \PYGZlt{}/p\PYGZgt{}\PYGZdq{}}\PYG{p}{);}
+                    \PYG{k}{echo} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}p\PYGZgt{}name: }\PYG{l+s+si}{\PYGZdl{}name}\PYG{l+s+s2}{ \PYGZlt{}/p\PYGZgt{}\PYGZdq{}}\PYG{p}{);}
+                    \PYG{k}{echo} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}p\PYGZgt{}bday: }\PYG{l+s+si}{\PYGZdl{}bday}\PYG{l+s+s2}{ \PYGZlt{}/p\PYGZgt{}\PYGZdq{}}\PYG{p}{);}
+                    \PYG{k}{echo} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}p\PYGZgt{}adress: }\PYG{l+s+si}{\PYGZdl{}adress}\PYG{l+s+s2}{ \PYGZlt{}/p\PYGZgt{}\PYGZdq{}}\PYG{p}{);}
+                \PYG{p}{\PYGZcb{}}\PYG{k}{catch}\PYG{p}{(}\PYG{n+nx}{PDOException} \PYG{n+nv}{\PYGZdl{}exception}\PYG{p}{)\PYGZob{}}
+                    \PYG{k}{echo} \PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}p\PYGZgt{} Error. Connection failed: \PYGZdq{}} \PYG{o}{.} \PYG{n+nv}{\PYGZdl{}exception}\PYG{o}{\PYGZhy{}\PYGZgt{}}\PYG{n+na}{getMessage}\PYG{p}{()}\PYG{o}{.}\PYG{l+s+s2}{\PYGZdq{}\PYGZlt{}/p\PYGZgt{}\PYGZdq{}}\PYG{p}{;}
+                    \PYG{k}{exit}\PYG{p}{();}
+                \PYG{p}{\PYGZcb{}}
+                \PYG{n+nv}{\PYGZdl{}connection} \PYG{o}{=} \PYG{k}{null}\PYG{p}{;}
+            \PYG{c+cp}{?\PYGZgt{}}
+\PYG{x}{        \PYGZlt{}/div\PYGZgt{}}
+\PYG{x}{    \PYGZlt{}/body\PYGZgt{}}
+\PYG{x}{\PYGZlt{}/html\PYGZgt{}}
+\end{Verbatim}

@@ -1,0 +1,38 @@
+\documentclass[a4paper]{article}
+\usepackage[a4paper, total={6in, 9.5in}]{geometry}
+%\pagestyle{headings}
+\input{includes.tex}	
+
+\begin{document}
+
+	\input{cover.tex}
+	
+	\tableofcontents
+	\pagenumbering{gobble}
+	\pagebreak	
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
+	
+	\section{Introduction}
+		\input{introduction.tex}
+	
+	\section{Simulations}
+		\input{simulation.tex}
+
+	\section{Verilog code}
+		\input{code.tex}
+	
+	\section{Place and Route}
+		\subsection{ Report place and route (f = 50MHz)}
+			\input{par50.tex}
+		\subsection{ Report place and route for the maximum operating frequency (f = 214,2MHz)}
+			\input{par214.tex}
+	
+	\section{ Final considerations}
+		\input{final.tex}
+		
+	\listoffigures
+	\renewcommand\listoflistingscaption{List of source codes}
+	\listoflistings
+		
+\end{document}

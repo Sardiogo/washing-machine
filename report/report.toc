@@ -1,0 +1,9 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {section}{\numberline {2}Simulations}{1}{section.2}
+\contentsline {section}{\numberline {3}Verilog code}{6}{section.3}
+\contentsline {section}{\numberline {4}Place and Route}{8}{section.4}
+\contentsline {subsection}{\numberline {4.1} Report place and route (f = 50MHz)}{8}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2} Report place and route for the maximum operating frequency (f = 214,2MHz)}{11}{subsection.4.2}
+\contentsline {section}{\numberline {5} Final considerations}{15}{section.5}
+\contentsline {section}{List of Figures}{15}{section*.8}

@@ -1,0 +1,113 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{//////////////////////////////////////////////////////////////////////////////////}
+\PYG{c+c1}{// Author: Diogo Vilar Sardinha}
+\PYG{c+c1}{// Module Name:    wash\PYGZus{}fsm.v }
+\PYG{c+c1}{// Project Name: 	Laboratory \PYGZhy{} Digital Circuits \PYGZhy{} State machine}
+\PYG{c+c1}{// Target Devices: Basys 2 Spartan\PYGZhy{}3E FPGA}
+\PYG{c+c1}{// Description: }
+\PYG{c+c1}{//////////////////////////////////////////////////////////////////////////////////}
+
+\PYG{err}{`}\PYG{n}{timescale} \PYG{l+m+mi}{1}\PYG{n}{ns} \PYG{o}{/} \PYG{l+m+mi}{1}\PYG{n}{ns}
+
+\PYG{n}{module} \PYG{n}{wash\PYGZus{}fsm} \PYG{p}{(}\PYG{n}{clk}\PYG{p}{,}\PYG{n}{ready}\PYG{p}{,}\PYG{n}{water\PYGZus{}in}\PYG{p}{,}\PYG{n}{wash}\PYG{p}{,}\PYG{n}{drain}\PYG{p}{,}\PYG{n}{speed}\PYG{p}{,}\PYG{n}{heat\PYGZus{}r}\PYG{p}{,}\PYG{n}{reset}\PYG{p}{,}\PYG{n}{start}\PYG{p}{,}\PYG{n}{full}\PYG{p}{,}\PYG{n}{cold}\PYG{p}{,}\PYG{n}{empty}\PYG{p}{);}
+
+	\PYG{n}{input} \PYG{n}{clk}\PYG{p}{,} \PYG{n}{reset}\PYG{p}{,} \PYG{n}{start}\PYG{p}{,} \PYG{n}{full}\PYG{p}{,} \PYG{n}{cold}\PYG{p}{,} \PYG{n}{empty}\PYG{p}{;}
+	\PYG{n}{output} \PYG{n}{ready}\PYG{p}{,} \PYG{n}{water\PYGZus{}in}\PYG{p}{,} \PYG{n}{wash}\PYG{p}{,}\PYG{n}{drain}\PYG{p}{,} \PYG{n}{speed}\PYG{p}{,} \PYG{n}{heat\PYGZus{}r}\PYG{p}{;} 
+	\PYG{c+c1}{// output is declared reg so that it can be assigned in an always block: }
+	\PYG{n}{reg} \PYG{n}{ready}\PYG{p}{,} \PYG{n}{water\PYGZus{}in}\PYG{p}{,} \PYG{n}{wash}\PYG{p}{,} \PYG{n}{drain}\PYG{p}{,} \PYG{n}{speed}\PYG{p}{,} \PYG{n}{heat\PYGZus{}r}\PYG{p}{;}  
+	
+	\PYG{n}{parameter} \PYG{n}{state0}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{state1}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{state2}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n}{state3}\PYG{o}{=}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{n}{state4}\PYG{o}{=}\PYG{l+m+mi}{4}\PYG{p}{;}
+	\PYG{n}{reg}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{o}{:}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{n}{nxt\PYGZus{}st} \PYG{o}{=} \PYG{n}{state0}\PYG{p}{,} \PYG{n}{state} \PYG{o}{=} \PYG{n}{state0}\PYG{p}{;}
+	
+	\PYG{c+cm}{/* \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+cm}{	Clock \PYGZhy{}\PYGZgt{} f = 50MHz \PYGZhy{}\PYGZgt{}  T = 1/50M = 20ns }
+\PYG{c+cm}{	\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+cm}{	4 seconds \PYGZhy{}\PYGZgt{} 4 * 50M clock periods \PYGZhy{}\PYGZgt{} 4s = (200 000 000)*T  }
+\PYG{c+cm}{	2 seconds \PYGZhy{}\PYGZgt{} 2 * 50M clock periods \PYGZhy{}\PYGZgt{} 2s = (100 000 000)*T}
+\PYG{c+cm}{	\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYG{c+cm}{	200 000 000 = 101 11110 10111 10000 10000 00000 }
+\PYG{c+cm}{	Nr of bits needed on register = 28bits }
+\PYG{c+cm}{	\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}*/}
+	
+	\PYG{c+c1}{// Clock counter for countdown :}
+	\PYG{n}{reg}\PYG{p}{[}\PYG{l+m+mi}{27}\PYG{o}{:}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{n}{t} \PYG{o}{=} \PYG{l+m+mi}{0} \PYG{p}{;} 
+	\PYG{c+c1}{// State countdown start values	:}
+	\PYG{n}{parameter} \PYG{n}{st2\PYGZus{}counter} \PYG{o}{=} \PYG{l+m+mi}{200000000} \PYG{p}{,} \PYG{n}{st4\PYGZus{}counter} \PYG{o}{=} \PYG{l+m+mi}{100000000} \PYG{p}{;}
+	\PYG{c+c1}{// State countdown enabler :}
+	\PYG{n}{reg} \PYG{n}{countdown\PYGZus{}on} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} 
+
+	\PYG{c+cm}{/*\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}/}
+\PYG{c+cm}{		 Always Block \PYGZhy{}\PYGZgt{} Time countdowns for states transitions}
+\PYG{c+cm}{	/\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} */}
+	\PYG{n}{always} \PYG{err}{@}\PYG{p}{(}\PYG{n}{posedge} \PYG{n}{clk}\PYG{p}{)} 
+		\PYG{n+nl}{begin}\PYG{p}{:} \PYG{n}{state\PYGZus{}change\PYGZus{}countdown}	
+				\PYG{k}{if} \PYG{p}{(}\PYG{n}{countdown\PYGZus{}on}\PYG{p}{)} \PYG{n}{t} \PYG{o}{=} \PYG{n}{t} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{;}
+				\PYG{k}{else} \PYG{n}{t} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+		\PYG{n}{end} 
+
+	\PYG{c+cm}{/*\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}/}
+\PYG{c+cm}{		 		Always Block \PYGZhy{}\PYGZgt{} Device Inputs detection}
+\PYG{c+cm}{	/\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} */}
+	\PYG{n}{always} \PYG{err}{@}\PYG{p}{(}\PYG{o}{*}\PYG{p}{)}
+		\PYG{n+nl}{begin} \PYG{p}{:} \PYG{n}{next\PYGZus{}state\PYGZus{}logic}
+			\PYG{n}{heat\PYGZus{}r} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+			\PYG{n}{countdown\PYGZus{}on} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+			\PYG{n}{nxt\PYGZus{}st}\PYG{o}{=} \PYG{n}{state}\PYG{p}{;}
+				\PYG{k}{case} \PYG{p}{(}\PYG{n}{state}\PYG{p}{)}		
+				\PYG{n+nl}{state0}\PYG{p}{:} \PYG{n}{begin}
+								\PYG{n}{countdown\PYGZus{}on} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+								\PYG{k}{if} \PYG{p}{(}\PYG{n}{start}\PYG{p}{)} \PYG{n}{nxt\PYGZus{}st} \PYG{o}{=} \PYG{n}{state1}\PYG{p}{;}
+						  \PYG{n}{end}
+				\PYG{n+nl}{state1}\PYG{p}{:} \PYG{n}{begin}
+								\PYG{n}{countdown\PYGZus{}on} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+								\PYG{k}{if} \PYG{p}{(}\PYG{n}{full}\PYG{p}{)} \PYG{n}{nxt\PYGZus{}st} \PYG{o}{=} \PYG{n}{state2}\PYG{p}{;}
+						  \PYG{n}{end}
+				\PYG{n+nl}{state2}\PYG{p}{:} \PYG{n}{begin}
+								\PYG{k}{if} \PYG{p}{(}\PYG{n}{cold}\PYG{p}{)} \PYG{n}{heat\PYGZus{}r} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+								\PYG{k}{else} \PYG{n}{heat\PYGZus{}r} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+								\PYG{n}{countdown\PYGZus{}on} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+								\PYG{k}{if} \PYG{p}{(}\PYG{n}{t} \PYG{o}{==} \PYG{n}{st2\PYGZus{}counter}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} 
+									\PYG{n}{begin}
+										\PYG{n}{nxt\PYGZus{}st} \PYG{o}{=} \PYG{n}{state3}\PYG{p}{;}
+										\PYG{n}{heat\PYGZus{}r} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+									\PYG{n}{end}							
+						  \PYG{n}{end}
+				\PYG{n+nl}{state3}\PYG{p}{:} \PYG{n}{begin}
+								\PYG{n}{countdown\PYGZus{}on} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+								\PYG{k}{if} \PYG{p}{(}\PYG{n}{empty}\PYG{p}{)} \PYG{n}{nxt\PYGZus{}st} \PYG{o}{=} \PYG{n}{state4}\PYG{p}{;}
+						  \PYG{n}{end}
+				\PYG{n+nl}{state4}\PYG{p}{:} \PYG{n}{begin}
+								\PYG{n}{countdown\PYGZus{}on} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{;}
+								\PYG{k}{if} \PYG{p}{(}\PYG{n}{t} \PYG{o}{==} \PYG{n}{st4\PYGZus{}counter}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{nxt\PYGZus{}st} \PYG{o}{=} \PYG{n}{state0}\PYG{p}{;}
+						  \PYG{n}{end}
+				
+				\PYG{k}{default}\PYG{o}{:} \PYG{n}{nxt\PYGZus{}st} \PYG{o}{=} \PYG{n}{state0}\PYG{p}{;} \PYG{c+c1}{// default avoids latches*/}
+			\PYG{n}{endcase} 
+		\PYG{n}{end} 
+
+	\PYG{c+cm}{/*\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}/}
+\PYG{c+cm}{							Always Block \PYGZhy{}\PYGZgt{} Reset input detection}
+\PYG{c+cm}{	/\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{} */}
+	\PYG{n}{always} \PYG{err}{@}\PYG{p}{(}\PYG{n}{posedge} \PYG{n}{reset}\PYG{p}{,} \PYG{n}{posedge} \PYG{n}{clk}\PYG{p}{)}
+		\PYG{n+nl}{begin} \PYG{p}{:} \PYG{n}{reset\PYGZus{}detector}
+			\PYG{k}{if} \PYG{p}{(}\PYG{n}{reset}\PYG{p}{)} \PYG{n}{state} \PYG{o}{\PYGZlt{}=} \PYG{n}{state0}\PYG{p}{;}
+			\PYG{k}{else} \PYG{n}{state} \PYG{o}{\PYGZlt{}=} \PYG{n}{nxt\PYGZus{}st}\PYG{p}{;}
+		\PYG{n}{end}
+
+	\PYG{c+cm}{/*\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}/}
+\PYG{c+cm}{							Always Block \PYGZhy{}\PYGZgt{} Output actions on each state }
+\PYG{c+cm}{	/\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}*/}
+	\PYG{n}{always} \PYG{err}{@}\PYG{p}{(}\PYG{n}{state}\PYG{p}{)}
+		\PYG{n+nl}{begin} \PYG{p}{:} \PYG{n}{output\PYGZus{}logic}
+				\PYG{k}{case} \PYG{p}{(}\PYG{n}{state}\PYG{p}{)}
+					\PYG{n+nl}{state0}\PYG{p}{:} \PYG{n}{begin} \PYG{n}{ready}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{water\PYGZus{}in}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{wash}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{drain}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{speed}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{end} 
+					\PYG{n+nl}{state1}\PYG{p}{:} \PYG{n}{begin} \PYG{n}{ready}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{water\PYGZus{}in}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{wash}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{drain}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{speed}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{end} 
+					\PYG{n+nl}{state2}\PYG{p}{:} \PYG{n}{begin} \PYG{n}{ready}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{water\PYGZus{}in}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{wash}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{drain}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{speed}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{end} 
+					\PYG{n+nl}{state3}\PYG{p}{:} \PYG{n}{begin} \PYG{n}{ready}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{water\PYGZus{}in}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{wash}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{drain}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{speed}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{end}
+					\PYG{n+nl}{state4}\PYG{p}{:} \PYG{n}{begin} \PYG{n}{ready}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{water\PYGZus{}in}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{wash}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{drain}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{speed}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{end} 
+					\PYG{k}{default} \PYG{n}{begin} \PYG{n}{ready}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{;}\PYG{n}{water\PYGZus{}in}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{wash}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{drain}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{speed}\PYG{o}{=}\PYG{l+m+mi}{0}\PYG{p}{;}\PYG{n}{end}
+				\PYG{n}{endcase}
+		\PYG{n}{end}		
+		
+\PYG{n}{endmodule}
+\end{Verbatim}
