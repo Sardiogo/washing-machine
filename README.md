@@ -11,5 +11,3 @@ Diogo Vilar Sardinha  - Electrical and Computer Engineering  MSc student
 ------
 
 ![](./latex-report/img/basys2.jpg)
-
-![](./latex-report/img/Capture1.PNG)
